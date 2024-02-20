@@ -28,31 +28,25 @@
 class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-800">
 
 <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4">
-  <div class="pl-8 pt-4 text-4xl">Ojt Table</div>
+  <div class="pl-8 pt-4 text-4xl">Engage Table</div>
   <div class="shadow-md px-8 py-4 overflow-x-auto mx-2">
     <table id="dataTable" class="">
       <thead class="uppercase text-center">
         <tr>
           <th scope="col" class="text-center bg-main-color text-white">
-            OJT ID
+            Engage ID
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
             Province
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
-            Name of School
+            Category
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
-            Name of Student
+            Name of partner
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
-            Ojt Duration
-          </th>
-          <th scope="col" class="text-center bg-main-color text-white">
-            Start Date
-          </th>
-          <th scope="col" class="text-center bg-main-color text-white">
-            End Date
+            Address
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
             Action
@@ -60,18 +54,16 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
         </tr>
       </thead>
       <tbody class="uppercase text-center">
-        {% for ojt in ojts %}
+        {% for engage in engage_partner %}
         <tr>
-          <td>{{ ojt.id }}</td>
-          <td>{{ ojt.province }}</td>
-          <td>{{ ojt.school_name }}</td>
-          <td>{{ ojt.student_name }}</td>
-          <td>{{ ojt.ojt_duration }}</td>
-          <td>{{ ojt.start_date }}</td>
-          <td>{{ ojt.end_date }}</td>
+            <td>{{ engage.id }}</td>
+            <td>{{ engage.province }}</td>
+            <td>{{ engage.category }}</td>
+            <td>{{ engage.name_of_partner_or_office }}</td>
+            <td>{{ engage.address }}</td>
           <td data-label="Actions" class="flex justify-between">
-            <div class="flex">
-               <a href="{% url 'view_data_ojt' ojt.id %}">
+            <div class="action-buttons">
+               <a href="{% url 'view_data_engage' engage.id %}">
                 <button
                   type="button"
                   class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-gray-600 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -93,7 +85,7 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
                   V
                 </button>
               </a>
-              <a href="{% url 'update_data_ojt' ojt.id %}">
+              <a href="{% url 'update_data_engage' engage.id %}">
                 <button
                   type="button"
                   class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -116,7 +108,7 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
                 </button>
               </a>
 
-              <form method="post" action="{% url 'delete_data_ojt' ojt.id %}">
+              <form method="post" action="{% url 'delete_data_engage' engage.id %}" style="display:inline-block;">
                 {% csrf_token %}
                 <button
                   type="submit"
@@ -184,7 +176,7 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 
-    <a href="/epmd_ojt/add_data_ojt">
+    <a href="/epmd_engage/add_data_engage">
       <button
         type="button"
         data-tooltip-target="tooltip-copy"

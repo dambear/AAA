@@ -21,11 +21,15 @@
   </head>
 
   <body class="bg-gray-300">
-    {% include "shared/_sidebar.html" %} {% block content %} 
-    {% endblock content%}
+    {% include "shared/_sidebar.html" %} 
+
+    <div class="p-4 sm:ml-64">  {% block content %}     {% endblock content%}  </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
     {% block mainjs %}{% endblock mainjs %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
   </body>
 </html>

@@ -41,7 +41,7 @@ def epmd_ojt(request):
 
 def view_data_ojt(request, ojt_id):
     ojts = get_object_or_404(Intern_Table, id=ojt_id)
-    return render(request, "3_epmd_page/1_ojt/view_data_ojt.html", {"ojt": ojts})
+    return render(request, "3_epmd/1_ojt/view_data_ojt.html", {"ojt": ojts})
 
 
 def add_data_ojt(request):
@@ -181,7 +181,7 @@ def update_data_ojt(request, ojt_id):
         )  # You can change 'epmd_ojt' to the appropriate URL name
 
     # Render the edit_data_ojt.html template with the retrieved application object
-    return render(request, "3_epmd_page/1_ojt/update_data_ojt.html", {"ojt": ojt})
+    return render(request, "3_epmd/1_ojt/update_data_ojt.html", {"ojt": ojt})
 
 
 def delete_data_ojt(request, ojt_id):
@@ -196,5 +196,5 @@ def delete_data_ojt(request, ojt_id):
     else:
         # Render a confirmation page with the option to delete
         return render(
-            request, "3_epmd_page/1_ojt/delete_confirmation.html", {"ojt": ojt}
+            request, "3_epmd/1_ojt/delete_confirmation.html", {"ojt": ojt}
         )

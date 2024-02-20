@@ -251,3 +251,18 @@ class Training_Webinars_Table(models.Model):
             self.id = new_id
 
         super().save(*args, **kwargs)
+
+
+
+class Exam_Table(models.Model):
+    id = models.AutoField(primary_key=True)
+    province = models.CharField(max_length=100)
+    name_of_examinee = models.CharField(max_length=255)
+    venue_or_school = models.CharField(max_length=255)
+    gender = models.CharField(max_length=10)
+    time = models.DateTimeField()
+    status = models.CharField(max_length=20)
+    remark_or_grade = models.CharField(max_length=255)
+    
+    class Meta:
+        db_table = "Exam_Table"

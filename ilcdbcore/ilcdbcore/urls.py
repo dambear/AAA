@@ -5,6 +5,9 @@ from .views.epmd.views import index
 
 
 from .views.epmd.ojt_view import epmd_ojt, add_data_ojt, update_data_ojt, delete_data_ojt, view_data_ojt
+from .views.epmd.engage_view import epmd_engage, add_data_engage, update_data_engage, delete_data_engage, view_data_engage
+from .views.tmd.tmd_view import tmd, add_data_tmd
+from .views.c3d2.c3d2_view import c3d2, add_data_c3d2
 
 from .views.auth.auth import login_page, logout_page
 
@@ -32,4 +35,27 @@ urlpatterns = [
     path("epmd_ojt/update_data_ojt/<int:ojt_id>/", update_data_ojt, name="update_data_ojt",),
     path("epmd_ojt/delete_data_ojt/<int:ojt_id>/", delete_data_ojt, name="delete_data_ojt",),
     path("epmd_ojt/view_data_ojt/<int:ojt_id>/", view_data_ojt, name="view_data_ojt"),
+    
+    #
+    #
+    #
+    #
+    path('epmd_engage', epmd_engage, name='epmd_engage'),  
+    path('epmd_engage/add_data_engage/', add_data_engage, name='add_data_engage'),
+    path('epmd_engage/update_data_engage/<int:engage_id>/',update_data_engage, name='update_data_engage'),
+    path('epmd_engage/delete_data_engage/<int:engage_id>/',delete_data_engage, name='delete_data_engage'),
+    path('epmd_engage/view_data_engage/<int:engage_id>/',view_data_engage, name='view_data_engage'),
+    
+    #
+    #
+    path('tmd/', tmd, name='tmd'),
+    path('tmd/add_data_tmd/', add_data_tmd, name='add_data_tmd'),
+      #
+    #
+    path('c3d2/add_data_c3d2/', add_data_c3d2, name='add_data_c3d2'),
+    path('c3d2/', c3d2, name='c3d2'),
+    
+    
+    
 ]
+

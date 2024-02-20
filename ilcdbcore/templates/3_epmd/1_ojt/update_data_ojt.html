@@ -12,7 +12,7 @@
       Student Information
     </h4>
 
-    <form method="post" action="{% url 'add_data_ojt' %}">
+    <form method="post" action="{% url 'update_data_ojt' ojt.id %}">
       {% csrf_token %}
       <div class="grid grid-cols-3 gap-4 mb-4">
         <div class="relative">
@@ -44,7 +44,7 @@
               id="student_name"
               name="student_name"
               class="bg-white-50 border border-black-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-600 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Juan S. Dela Cruz"
+              value="{{ojt.student_name}}"
             />
           </div>
         </div>
@@ -80,8 +80,8 @@
               class="bg-white-50 border border-black text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option value="" disabled selected>Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="male" {% if ojt.gender == 'male' %} selected {% endif %}>Male</option>
+              <option value="female" {% if ojt.gender == 'female' %} selected {% endif %}>Female</option>
             </select>
           </div>
         </div>
@@ -114,7 +114,7 @@
               id="school_name"
               name="school_name"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Name of the School"
+              value="{{ojt.school_name}}"
             />
           </div>
         </div>
@@ -147,7 +147,7 @@
               id="school_address"
               name="school_address"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Adress of the School"
+              value="{{ojt.school_address}}"
             />
           </div>
         </div>
@@ -179,8 +179,8 @@
               name="contact_number"
               aria-describedby="helper-text-explanation"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="0912-345-6789"
-              required
+              value="{{ojt.contact_number}}"
+             
             />
           </div>
         </div>
@@ -213,7 +213,7 @@
               id="contact_person"
               name="contact_person"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Ricardo S. Dalisay"
+              value="{{ojt.contact_person}}"
             />
           </div>
         </div>
@@ -247,11 +247,11 @@
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option value="" disabled selected>Select Province</option>
-              <option value="Cavite">Cavite</option>
-              <option value="Laguna">Laguna</option>
-              <option value="Batangas">Batangas</option>
-              <option value="Rizal">Rizal</option>
-              <option value="Quezon">Quezon</option>
+              <option value="Cavite" {% if ojt.province == 'Cavite' %} selected {% endif %}>Cavite</option>
+              <option value="Laguna" {% if ojt.province == 'Laguna' %} selected {% endif %}>Laguna</option>
+              <option value="Batangas" {% if ojt.province == 'Batangas' %} selected {% endif %}>Batangas</option>
+              <option value="Rizal" {% if ojt.province == 'Rizal' %} selected {% endif %}>Rizal</option>
+              <option value="Quezon" {% if ojt.province == 'Quezon' %} selected {% endif %}>Quezon</option>
             </select>
           </div>
         </div>
@@ -292,11 +292,10 @@
               id="ojt_duration"
               name="ojt_duration"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="1 hour/s"
-            />
+              value="{{ojt.ojt_duration}}">
           </div>
         </div>
-        <div class="relative">
+<div class="relative">
           <label
             for="start_date"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -325,7 +324,7 @@
               id="start_date"
               name="start_date"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="1 hour/s"
+              value="{{ojt.start_date | date:'Y-m-d'}}"
             />
           </div>
         </div>
@@ -358,13 +357,13 @@
               id="end_date"
               name="end_date"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="1 hour/s"
+              value="{{ojt.end_date | date:'Y-m-d'}}"
             />
           </div>
         </div>
-        {% comment %}
-        <div class="relative">
-          >>>>>>>>>>> 2024/0/43 need but its 02/21/4344
+
+
+        {% comment %} <div class="relative">
           <label
             for="start_date"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -393,7 +392,7 @@
               name="start_date"
               type="text"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Select date"
+              value="{{ojt.start_date | date:'Y-m-d'}}"
             />
           </div>
         </div>
@@ -425,11 +424,10 @@
               name="end_date"
               type="text"
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Select date"
+              value="{{ojt.end_date | date:'Y-m-d' }}"
             />
           </div>
-        </div>
-        {% endcomment %}
+        </div> {% endcomment %}
         <div class="relative">
           <label
             for="mode"
@@ -467,9 +465,10 @@
               class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option value="" disabled selected>Select Mode</option>
-              <option value="ftf">Face-to-Face</option>
-              <option value="online">Online</option>
-              <option value="hybrid">Hybrid</option>
+              <option value="" disabled>Select Mode</option>
+              <option value="ftf" {% if ojt.mode == 'ftf' %} selected {% endif %}>Face-to-Face</option>
+              <option value="online" {% if ojt.mode == 'online' %} selected {% endif %}>Online</option>
+              <option value="hybrid" {% if ojt.mode == 'hybrid' %} selected {% endif %}>Hybrid</option>
             </select>
           </div>
         </div>
@@ -486,10 +485,11 @@
             <input
               id="bordered-checkbox-recommendation"
               type="checkbox"
-              value=""
               name="recommendation_letter"
               class="w-4 h-4 text-blue-800 bg-gray-white border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.recommendation_letter %}checked{% endif %} 
+              value="True"
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -519,10 +519,12 @@
             <input
               id="bordered-checkbox-application"
               type="checkbox"
-              value=""
               name="application_form"
               class="w-4 h-4 text-blue-800 bg-gray-white border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.application_form %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -552,10 +554,13 @@
             <input
               id="bordered-checkbox-cvresume"
               type="checkbox"
-              value=""
               name="cv_resume"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.cv_resume %}checked{% endif %} 
+              value="True"
+            
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -586,10 +591,11 @@
             <input
               id="bordered-checkbox-medcertificate"
               type="checkbox"
-              value=""
               name="medical_certificate"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.medical_certificate %}checked{% endif %} 
+              value="True"
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -619,10 +625,12 @@
             <input
               id="bordered-checkbox-workplanform"
               type="checkbox"
-              value=""
               name="workplan_form"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.workplan_form %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -652,10 +660,12 @@
             <input
               id="bordered-checkbox-interviewform"
               type="checkbox"
-              value=""
               name="interview_form"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.interview_form %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -685,10 +695,12 @@
             <input
               id="bordered-checkbox-acceptanceletter"
               type="checkbox"
-              value=""
               name="acceptance_letter"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.acceptance_letter %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -718,10 +730,12 @@
             <input
               id="bordered-checkbox-wfharrangement"
               type="checkbox"
-              value=""
               name="wfh_arrangement"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.wfh_arrangement %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -751,10 +765,13 @@
             <input
               id="bordered-checkbox-nda"
               type="checkbox"
-              value=""
+     
               name="nda"
               class="w-4 h-4 text-blue-600 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.nda %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -784,10 +801,12 @@
             <input
               id="bordered-checkbox-workassignmentform"
               type="checkbox"
-              value=""
               name="work_assignment_form"
               class="w-4 h-4 text-blue-800 bg-white-100 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.work_assignment_form %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -817,10 +836,12 @@
             <input
               id="bordered-checkbox-war"
               type="checkbox"
-              value=""
               name="war"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.war %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -851,10 +872,13 @@
             <input
               id="bordered-checkbox-timesheet"
               type="checkbox"
-              value=""
+
               name="timesheet"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.timesheet %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -884,10 +908,13 @@
             <input
               id="bordered-checkbox-coc"
               type="checkbox"
-              value=""
+   
               name="coc"
               class="w-4 h-4 text-blue-800 bg-white-100 border-gray-900 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
+              {% if ojt.coc %}checked{% endif %} 
+              value="True"
+            
+              />
 
             <div class="pl-8 pr-2">
               <svg
@@ -927,13 +954,17 @@
               name="remarks"
               rows="4"
               class="block p-2.5 w-full text-sm text-gray-900 bg-white-50 rounded-lg border border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Write your thoughts here..."
-            ></textarea>
+              cols="50"
+            >{{ ojt.remarks }}</textarea>
           </div>
+          
         </div>
       </div>
+
       <div class="my-4 d-flex justify-content-end">
-        <button type="submit" class="btnSub btn-primary btn-lg">Submit</button>
+            <button type="submit" class="btnSub btn-primary btn-lg">
+              Submit
+            </button>
       </div>
     </form>
   </div>
