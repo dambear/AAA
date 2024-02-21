@@ -79,8 +79,8 @@
               disabled
               >
               <option value="" disabled selected>Select Gender</option>
-              <option value="male" {% if ojt.gender == 'male' %} selected {% endif %}>Male</option>
-              <option value="female" {% if ojt.gender == 'female' %} selected {% endif %}>Female</option>
+              <option value="Male" {% if ojt.gender == 'Male' %} selected {% endif %}>Male</option>
+              <option value="Female" {% if ojt.gender == 'Female' %} selected {% endif %}>Female</option>
             </select>
           </div>
         </div>
@@ -250,11 +250,11 @@
               disabled
               >
               <option value="" disabled selected>Select Province</option>
-              <option value="Cavite" {% if c3d2.province == 'Cavite' %} selected {% endif %}>Cavite</option>
-              <option value="Laguna" {% if c3d2.province == 'Laguna' %} selected {% endif %}>Laguna</option>
-              <option value="Batangas" {% if c3d2.province == 'Batangas' %} selected {% endif %}>Batangas</option>
-              <option value="Rizal" {% if c3d2.province == 'Rizal' %} selected {% endif %}>Rizal</option>
-              <option value="Quezon" {% if c3d2.province == 'Quezon' %} selected {% endif %}>Quezon</option>
+              <option value="Cavite" {% if ojt.province == 'Cavite' %} selected {% endif %}>Cavite</option>
+              <option value="Laguna" {% if ojt.province == 'Laguna' %} selected {% endif %}>Laguna</option>
+              <option value="Batangas" {% if ojt.province == 'Batangas' %} selected {% endif %}>Batangas</option>
+              <option value="Rizal" {% if ojt.province == 'Rizal' %} selected {% endif %}>Rizal</option>
+              <option value="Quezon" {% if ojt.province == 'Quezon' %} selected {% endif %}>Quezon</option>
 
             </select>
           </div>

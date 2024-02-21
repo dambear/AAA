@@ -72,6 +72,9 @@ def add_data_ojt(request):
         timesheet = request.POST.get("timesheet") == "True"
         coc = request.POST.get("coc") == "True"
         remarks = request.POST.get("remarks")
+        
+        start_date_obj = datetime.strptime(start_date, "%m/%d/%Y").strftime("%Y-%m-%d")
+        end_date_obj = datetime.strptime(end_date, "%m/%d/%Y").strftime("%Y-%m-%d")
 
         # Create a new Intern_Table instance with the form data
         new_intern = Intern_Table(
@@ -83,8 +86,8 @@ def add_data_ojt(request):
             contact_number=contact_number,
             student_name=student_name,
             gender=gender,
-            start_date=start_date,
-            end_date=end_date,
+            start_date=start_date_obj,
+            end_date=end_date_obj,
             mode=mode,
             recommendation_letter=recommendation_letter,
             application_form=application_form,
@@ -144,6 +147,12 @@ def update_data_ojt(request, ojt_id):
         timesheet = request.POST.get("timesheet") == "True"
         coc = request.POST.get("coc") == "True"
         remarks = request.POST.get("remarks")
+        
+        
+        
+        
+        start_date_obj = datetime.strptime(start_date, "%m/%d/%Y").strftime("%Y-%m-%d")
+        end_date_obj = datetime.strptime(end_date, "%m/%d/%Y").strftime("%Y-%m-%d")
 
         # Update the fields of the retrieved application object
         ojt.ojt_duration = ojt_duration
@@ -154,8 +163,8 @@ def update_data_ojt(request, ojt_id):
         ojt.contact_number = contact_number
         ojt.student_name = student_name
         ojt.gender = gender
-        ojt.start_date = start_date
-        ojt.end_date = end_date
+        ojt.start_date = start_date_obj
+        ojt.end_date = end_date_obj
         ojt.mode = mode
         ojt.recommendation_letter = recommendation_letter
         ojt.application_form = application_form

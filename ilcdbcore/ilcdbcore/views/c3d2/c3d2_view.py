@@ -5,12 +5,18 @@ from main.models import Exam_Table
 
 
 def c3d2(request):
-    return render(request, "2_c3d2/index.html")
+    c3d2s = Exam_Table.objects.all()
+    return render(request, "2_c3d2/index.html", {"c3d2s": c3d2s})
+
+
+def view_data_c3d2(request, c3d2_id):
+    c3d2 = get_object_or_404(Exam_Table, id=c3d2_id)
+    return render(request, "2_c3d2/view_data_c3d2.html", {"c3d2": c3d2})
 
 def add_data_c3d2(request):
 
     if request.method == "POST":
-        province = request.POST.get("lgu_m")
+        province = request.POST.get("province")
         name_of_examinee = request.POST.get("name_of_examinee")
         venue_or_school = request.POST.get("venue_or_school")
         gender = request.POST.get("gender")
@@ -76,4 +82,18 @@ def update_data_c3d2(request, c3d2_id):
         )  # You can change 'epmd_ojt' to the appropriate URL name
 
     # Render the edit_data_ojt.html template with the retrieved application object
-    return render(request, "2_c3d2/1_ojt/update_data_c3d2.html", {"ojt": ojt})
+    return render(request, "2_c3d2/update_data_c3d2.html", {"c3d2": c3d2})
+
+
+def delete_data_c3d2(request, c3d2_id):
+    # Get the intern instance to be deleted or return 404 if not found
+    c3d2 = get_object_or_404(Exam_Table, id=c3d2_id)
+
+    if request.method == "POST":
+        # Delete the intern instance
+        c3d2.delete()
+
+        return redirect("c3d2")  # Redirect to 'epmd_ojt' URL pattern
+    else:
+        # Render a confirmation page with the option to delete
+        return render(request, "2_c3d2/delete_confirmation.html", {"c3d2": c3d2})

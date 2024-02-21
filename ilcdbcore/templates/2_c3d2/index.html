@@ -34,6 +34,9 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
       <thead class="uppercase text-center">
         <tr>
           <th scope="col" class="text-center bg-main-color text-white">
+            Id
+           </th>
+          <th scope="col" class="text-center bg-main-color text-white">
            Name Examinee
           </th>
           <th scope="col" class="text-center bg-main-color text-white">
@@ -54,10 +57,10 @@ class="items-center justify-center h-auto rounded-xl bg-gray-200 dark:bg-gray-80
         </tr>
       </thead>
       <tbody class="uppercase text-center">
-        {% for c3d2 in c3d2 %}
+        {% for c3d2 in c3d2s %}
         <tr>
             <td>{{ c3d2.id }}</td>
-            <td>{{ c32d.name_examinee }}</td>
+            <td>{{ c3d2.name_of_examinee }}</td>
             <td>{{ c3d2.gender }}</td>
             <td>{{ c3d2.province }}</td>
             <td>{{ c3d2.venue_or_school }}</td>

@@ -41,7 +41,7 @@
             name="name_of_examinee"
             class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Name of the Examinee"
-            value="{{ engage.name_of_examinee }}"
+            value="{{ c3d2.name_of_examinee }}"
             disabled
           />
         </div>
@@ -79,8 +79,8 @@
             disabled
             >
             <option value="" disabled selected>Select Gender</option>
-            <option value="male" {% if c3d2.gender == 'male' %} selected {% endif %}>Male</option>
-              <option value="female" {% if c3d2.gender == 'female' %} selected {% endif %}>Female</option>
+            <option value="Male" {% if c3d2.gender == 'Male' %} selected {% endif %}>Male</option>
+            <option value="Female" {% if c3d2.gender == 'Female' %} selected {% endif %}>Female</option>
           </select>
         </div>
       </div>
@@ -112,13 +112,14 @@
             id="province"
             name="province"
             class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-e-lg border-s-gray-100 dark:border-s-gray-700 border-s-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          >
+            disabled
+            >
             <option value="" disabled selected>Select Province</option>
-            <option value="Cavite">Cavite</option>
-            <option value="Laguna">Laguna</option>
-            <option value="Batangas">Batangas</option>
-            <option value="Rizal">Rizal</option>
-            <option value="Quezon">Quezon</option>
+            <option value="Cavite" {% if c3d2.province == 'Cavite' %} selected {% endif %}>Cavite</option>
+            <option value="Laguna" {% if c3d2.province == 'Laguna' %} selected {% endif %}>Laguna</option>
+            <option value="Batangas" {% if c3d2.province == 'Batangas' %} selected {% endif %}>Batangas</option>
+            <option value="Rizal" {% if c3d2.province == 'Rizal' %} selected {% endif %}>Rizal</option>
+            <option value="Quezon" {% if c3d2.province == 'Quezon' %} selected {% endif %}>Quezon</option>
           </select>
         </div>
       </div>
@@ -153,7 +154,8 @@
             id="venue_or_school"
             name="venue_or_school"
             class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Name of the Venue/School"
+            value="{{ c3d2.venue_or_school }}"
+            readonly
           />
         </div>
       </div>
@@ -183,11 +185,14 @@
         </svg>
           </div>
           <input
-            type="time"
+            type="datetime-local"
             id="time"
             name="time"
+            
             class="bg-white-50 border border-gray-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
+            value="{{ c3d2.time | date:'Y-m-d\TH:i:s' }}"
+            
+            disabled
           />
         </div>
       </div>
@@ -220,7 +225,8 @@
             id="status"
             name="status"
             class="bg-white-50 border border-gray-900 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
+            value="{{ c3d2.status }}"
+            readonly
           />
         </div>
       </div>
@@ -253,7 +259,8 @@
             id="remark_or_grade"
             name="remark_or_grade"
             class="bg-white-50 border border-gray-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
+            value="{{ c3d2.remark_or_grade }}"
+            readonly
           />
         </div>
       </div>

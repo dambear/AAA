@@ -135,3 +135,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # comment this next line of code if you migrate or have new database
 AUTH_USER_MODEL = "main.User"
+
+
